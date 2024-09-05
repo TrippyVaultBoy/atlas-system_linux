@@ -42,12 +42,11 @@ char *_getline(const int fd)
         memcpy(line + total_size, buffer, bytes_read);
         total_size += bytes_read;
 
-        newline_position = memchr(line, '\n', total_size);
-        if (newline_position != NULL)
-        {
-            size_t line_length = newline_position - line;
-            line[line_length] = '\0';
-            return line;
+        for (ssize_t i = 0; i < bytes_read; i++) {
+            if (buffer[i] == '\n') {
+                line[total_size - bytes_read + i] = '\0';  // Null-terminate the line
+                return line;
+            }
         }
     }
 
