@@ -1,21 +1,16 @@
 #include "laps.h"
 
-typedef struct {
-    int id;
-    int laps;
-} Car;
-
 static Car *cars = NULL;
 static size_t car_count = 0;
 
 int find_car(int id) {
-    for (size_t i = 0; i < car_count; i++)
-    {
+	for (size_t i = 0; i < car_count; i++)
+	{
 		if (cars[i].id == id)
 		{
 			return i;
 		}
-    }
+	}
 	return -1;
 }
 

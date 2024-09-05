@@ -5,6 +5,12 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+typedef struct 
+{
+    int id;
+    int laps;
+} Car;
+
 int find_car(int id);
 void add_car(int id);
 int compare_cars(const void *a, const void *b);
