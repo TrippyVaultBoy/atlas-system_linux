@@ -29,6 +29,7 @@ void add_car(int id)
 	}
 	cars[car_count - 1].id = id;
 	cars[car_count - 1].laps = 0;
+	printf("Car %d joined the race\n", id);
 }
 
 void bubble_sort_cars() {
@@ -68,6 +69,7 @@ void race_state(int *id, size_t size)
 
 	bubble_sort_cars();
 
+	printf("\nRace state:\n");
 	for (size_t i = 0; i < car_count; i++)
 	{
 		printf("Car %d [%d laps]\n", cars[i].id, cars[i].laps);
