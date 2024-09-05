@@ -31,11 +31,16 @@ void add_car(int id)
 	cars[car_count - 1].laps = 0;
 }
 
-int compare_cars(const void *a, const void *b)
-{
-	Car *carA = (Car *)a;
-	Car *carB = (Car *)b;
-	return carA->id - carB->id;
+void bubble_sort_cars() {
+    for (size_t i = 0; i < car_count - 1; i++) {
+        for (size_t j = 0; j < car_count - 1 - i; j++) {
+            if (cars[j].id > cars[j + 1].id) {
+                Car temp = cars[j];
+                cars[j] = cars[j + 1];
+                cars[j + 1] = temp;
+            }
+        }
+    }
 }
 
 void race_state(int *id, size_t size)
@@ -61,7 +66,7 @@ void race_state(int *id, size_t size)
 		}
 	}
 
-	qsort(cars, car_count, sizeof(Car), compare_cars);
+	bubble_sort_cars();
 
 	for (size_t i = 0; i < car_count; i++)
 	{
