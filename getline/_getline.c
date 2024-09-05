@@ -44,7 +44,7 @@ char *_getline(const int fd) {
         memcpy(line + total_size, buffer, bytes_read);
         total_size += bytes_read;
 
-        for (i = total_size - bytes_read; i < total_size; i++) {
+        for ( ssize_t i = total_size - bytes_read; i < total_size; i++) {
             if (line[i] == '\n') {
                 line[i] = '\0';
                 return line;
