@@ -47,8 +47,10 @@ char *_getline(const int fd)
         {
             size_t line_length = newline_position - line;
             line[line_length] = '\0';
-            lseek(fd, -(total_size - line_length - 1), SEEK_CUR);
             return line;
         }
     }
+
+    line[total_size] = '\0';
+    return line;
 }
