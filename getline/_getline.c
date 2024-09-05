@@ -6,7 +6,7 @@ char *_getline(const int fd) {
     size_t buffer_size = READ_SIZE;
     char *line = NULL;
     ssize_t bytes_read;
-    ssize_t i;
+    size_t i;
 
     if (fd < 0) {
         return NULL;
@@ -44,7 +44,7 @@ char *_getline(const int fd) {
         memcpy(line + total_size, buffer, bytes_read);
         total_size += bytes_read;
 
-        for ( ssize_t i = total_size - bytes_read; i < total_size; i++) {
+        for (i = total_size - bytes_read; i < total_size; i++) {
             if (line[i] == '\n') {
                 line[i] = '\0';
                 return line;
