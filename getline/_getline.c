@@ -7,7 +7,6 @@ char *_getline(const int fd)
     size_t buffer_size = READ_SIZE;
     char *line = NULL;
     ssize_t bytes_read;
-    char *newline_position;
 
     if (fd < 0)
     {
