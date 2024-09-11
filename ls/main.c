@@ -5,7 +5,7 @@ int main() {
     DIR *dir;
     struct dirent *read;
 
-    dir = opendir("../getline");
+    dir = opendir("../test");
     if (dir == NULL)
     {
         perror("unable to open directory");
