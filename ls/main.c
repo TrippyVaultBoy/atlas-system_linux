@@ -4,7 +4,6 @@
 int main() {
     DIR *dir;
     struct dirent *read;
-    char dirEntries [] = {};
 
     dir = opendir("../test");
     if (dir == NULL)
