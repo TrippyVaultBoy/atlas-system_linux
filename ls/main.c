@@ -22,7 +22,7 @@ int main() {
 
         printf("%s ", read->d_name);
     }
-    printf('\n');
+    printf("\n");
 
     closedir(dir);
     return 0;
