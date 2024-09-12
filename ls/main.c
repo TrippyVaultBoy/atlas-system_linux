@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <dirent.h>
-
+/**
+ * main- program entry point
+ *
+ * Return: 0 or -1
+ */
 int main() {
     DIR *dir;
     struct dirent *read;
