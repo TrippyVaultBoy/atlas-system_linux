@@ -5,27 +5,33 @@
  *
  * Return: 0 or -1
  */
-int main() {
+int main(int argc, char *argv[]) {
     DIR *dir;
     struct dirent *read;
+    int i;
 
-    dir = opendir("../test");
-    if (dir == NULL)
+    for (i = 1; i < argc; i++)
     {
-        perror("unable to open directory");
-        return -1;
-    }
+        printf("%s:\n", argv[i]);
 
-    while ((read = readdir(dir)) != NULL)
-    {
-        if (read->d_name[0] == '.')
+        dir = opendir(argv[i]);
+        if (dir == NULL)
         {
-            continue;
+            perror("unable to open directory");
+			return -1;
         }
 
-        printf("%s ", read->d_name);
+		while ((read = readdir(dir)) != NULL)
+		{
+			if (read->d_name[0] == '.')
+			{
+				continue;
+			}
+
+        	printf("%s ", read->d_name);	
+		}
+		printf("\n");
     }
-    printf("\n");
 
     closedir(dir);
     return 0;
