@@ -4,6 +4,7 @@
 int main() {
     DIR *dir;
     struct dirent *read;
+    char dirEntries [] = {};
 
     dir = opendir("../test");
     if (dir == NULL)
@@ -19,13 +20,9 @@ int main() {
             continue;
         }
 
-        if (read->d_name[0] == '.' && (read->d_name[0] == '\n' || read->d_name[1] == '.'))
-        {
-            continue;
-        }
-
-        printf("%s\n", read->d_name);
+        printf("%s ", read->d_name);
     }
+    printf('\n');
 
     closedir(dir);
     return 0;
