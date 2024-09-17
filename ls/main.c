@@ -28,8 +28,10 @@ int main(int argc, char *argv[]) {
 		else if (S_ISDIR(fileStat.st_mode))
 		{
 			if (argc > 2)
+			{
 				printf("%s: \n", argv[i]);
 				printf("\n");
+			}
 
         	dir = opendir(argv[i]);
 			if (dir == NULL) {
