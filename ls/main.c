@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     for (i = 1; i < argc; i++) {
 		if (lstat(argv[i], &fileStat) == -1)
 		{
-			perror("lstat error");
+			fprintf(stderr, "%s: cannot access %s: No such file or directory\n", argv[0], argv[i]);
 			return -1;
 		}
 
