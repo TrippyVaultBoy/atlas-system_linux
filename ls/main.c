@@ -23,15 +23,15 @@ int main(int argc, char *argv[]) {
 		if (S_ISREG(fileStat.st_mode))
 		{
 			printf("%s\n", argv[i]);
-			return 0;
+			break;
 		}
 		else if (S_ISDIR(fileStat.st_mode))
 		{
 			if (argc > 2)
 				printf("%s: \n", argv[i]);
+				printf("\n");
 
         	dir = opendir(argv[i]);
-        
 			if (dir == NULL) {
 				perror("unable to open directory");
 				return -1;
