@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 		if (S_ISREG(fileStat.st_mode))
 		{
 			printf("%s\n", argv[i]);
-			break;
+			return 0;
 		}
 		else if (S_ISDIR(fileStat.st_mode))
 		{
