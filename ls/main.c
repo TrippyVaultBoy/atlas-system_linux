@@ -43,8 +43,10 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 
-				printf("%s\n", read->d_name);	
+				printf("%s ", read->d_name);	
 			}
+		
+			printf("\n");
 
 			if (argc == 1)
 				break;
