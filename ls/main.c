@@ -12,8 +12,21 @@ int main(int argc, char *argv[]) {
     struct dirent *read;
 	struct stat fileStat;
     int i;
+	int one_column = 0;
+
+	for (i = 1; i < argc; i++)
+	{
+		if (strcmp(argv[i], "-1") == 0)
+		{
+			one_column = 1;
+			break;
+		}
+	}
 
     for (i = 1; i < argc; i++) {
+		if (strcmp(argv[i], "-1") == 0)
+			continue;
+		
 		if (lstat(argv[i], &fileStat) == -1)
 		{
 			fprintf(stderr, "%s: cannot access %s: No such file or directory\n", argv[0], argv[i]);
@@ -22,14 +35,28 @@ int main(int argc, char *argv[]) {
 
 		if (S_ISREG(fileStat.st_mode))
 		{
-			printf("%s\n", argv[i]);
-			return 0;
+			if (one_column == 1)
+			{
+				printf("%s\n", argv[i]);
+			}
+			else
+			{
+				printf(printf("%s ", argv[i]);)
+			}
+			
 		}
 		else if (S_ISDIR(fileStat.st_mode))
 		{
 			if (argc > 2)
 			{
-				printf("%s:\n", argv[i]);
+				if (one_column === 1)
+				{
+					printf("%s:\n", argv[i]);
+				}
+				else
+				{
+					printf("%s: ", argv[i]);
+				}
 			}
 
         	dir = opendir(argv[i]);
@@ -43,11 +70,16 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 
-				printf("%s ", read->d_name);	
+				if (one_column == 1)
+				{
+					printf("%s\n", read->d_name);	
+				}
+				else
+				{
+					printf("%s ", read->d_name);	
+				}
 			}
-		
 			printf("\n");
-
 			if (argc == 1)
 				break;
 		}
