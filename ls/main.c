@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string.h>
 /**
  * main- program entry point
  *
@@ -41,7 +42,7 @@ int main(int argc, char *argv[]) {
 			}
 			else
 			{
-				printf(printf("%s ", argv[i]);)
+				printf("%s ", argv[i]);
 			}
 			
 		}
@@ -49,7 +50,7 @@ int main(int argc, char *argv[]) {
 		{
 			if (argc > 2)
 			{
-				if (one_column === 1)
+				if (one_column == 1)
 				{
 					printf("%s:\n", argv[i]);
 				}
