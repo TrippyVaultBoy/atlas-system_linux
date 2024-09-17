@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 		else if (S_ISDIR(fileStat.st_mode))
 		{
 			if (argc > 2)
-				printf("%s:\n", argv[i]);
+				printf("%s: ", argv[i]);
 
         	dir = opendir(argv[i]);
         
