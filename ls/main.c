@@ -29,13 +29,13 @@ int main(int argc, char *argv[]) {
 		{
 			if (argc > 2)
 			{
-				printf("%s: \n", argv[i]);
+				printf("%s:\n", argv[i]);
 			}
 
         	dir = opendir(argv[i]);
 			if (dir == NULL) {
 				perror("unable to open directory");
-				return -1;
+				continue;
 			}
 
 			while ((read = readdir(dir)) != NULL) {
@@ -43,10 +43,8 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 
-				printf("%s ", read->d_name);	
+				printf("%s\n", read->d_name);	
 			}
-		
-			printf("\n");
 
 			if (argc == 1)
 				break;
