@@ -22,13 +22,13 @@ int main(int argc, char *argv[]) {
 
 		if (S_ISREG(fileStat.st_mode))
 		{
-			printf("%s", argv[i]);
+			printf("%s\n", argv[i]);
 			return 0;
 		}
 		else if (S_ISDIR(fileStat.st_mode))
 		{
 			if (argc > 2)
-				printf("%s:", argv[i]);
+				printf("%s:\n", argv[i]);
 
         	dir = opendir(argv[i]);
         
