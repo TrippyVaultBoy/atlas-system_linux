@@ -140,12 +140,16 @@ int main(int argc, char *argv[]) {
                     perms[8] = (fileStat.st_mode & S_IWOTH) ? 'w' : '-';
                     perms[9] = (fileStat.st_mode & S_IXOTH) ? 'x' : '-';
 					perms[10] = '\0';
-					printf("%s %ld %s %s %ld %s\n",
+                    char time_str[20];
+                    struct tm *timeinfo = localtime(&fileStat.st_mtime);
+                    strftime(time_str, sizeof(time_str), "%b %d %Y", timeinfo);
+					printf("%s %d %s %s %ld %s %s\n",
 						perms,
 						fileStat.st_nlink,
 						getpwuid(fileStat.st_uid)->pw_name,
 						getgrgid(fileStat.st_gid)->gr_name,
 						fileStat.st_size,
+                        time_str,
                         read->d_name
 					);
 
