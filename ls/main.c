@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 	int A_flag = 0;
 	int l_flag = 0;
 
-    memset(&fileStat, 0, sizeof(struct stat));
+    realloc(&fileStat, 0, sizeof(struct stat));
 
 	for (i = 1; i < argc; i++)
 	{
