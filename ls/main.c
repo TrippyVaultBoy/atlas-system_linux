@@ -39,6 +39,8 @@ int main(int argc, char *argv[]) {
 	int A_flag = 0;
 	int l_flag = 0;
 
+    memset(&fileStat, 0, sizeof(struct stat));
+
 	for (i = 1; i < argc; i++)
 	{
 		if (_strcmp(argv[i], "-1"))
@@ -81,7 +83,7 @@ int main(int argc, char *argv[]) {
 		if (lstat(argv[i], &fileStat) == -1)
 		{
 			fprintf(stderr, "%s: cannot access %s: No such file or directory\n", argv[0], argv[i]);
-			return -1;
+			continue;
 		}
 
 		if (S_ISREG(fileStat.st_mode))
