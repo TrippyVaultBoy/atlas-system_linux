@@ -26,7 +26,7 @@ bool _strcmp (const char *str1, const char *str2)
  * Return: 0 or -1
  */
 int main(int argc, char *argv[]) {
-    DIR *dir;
+    DIR *dir = NULL;
     struct dirent *read;
 	struct stat fileStat;
     int i;
