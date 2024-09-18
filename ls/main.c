@@ -3,6 +3,23 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdbool.h>
+
+/**
+ *
+ */
+bool _strcmp (const char *str1, const char *str2)
+{
+	while (*str1 && *str2) {
+        if (*str1 != *str2) {
+            return false;
+        }
+        str1++;
+        str2++;
+    }
+    return (*str1 == *str2);
+}
+
 /**
  * main- program entry point
  *
@@ -17,7 +34,7 @@ int main(int argc, char *argv[]) {
 
 	for (i = 1; i < argc; i++)
 	{
-		if (strcmp(argv[i], "-1") == 0)
+		if (_strcmp(argv[i], "-1"))
 		{
 			one_column = 1;
 			break;
@@ -25,7 +42,7 @@ int main(int argc, char *argv[]) {
 	}
 
     for (i = 1; i < argc; i++) {
-		if (strcmp(argv[i], "-1") == 0)
+		if (_strcmp(argv[i], "-1"))
 			continue;
 		
 		if (lstat(argv[i], &fileStat) == -1)
