@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 
 	for (i = 1; i < argc; i++)
 	{
-		if (_strcmp(argv[i], "-1"))
+		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-11111"))
 		{
 			one_flag = 1;
 		}
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 
 	for (i = 1; i < argc; i++)
 	{
-		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A") || _strcmp(argv[i], "-l"))
+		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-11111") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A") || _strcmp(argv[i], "-l"))
 			continue;
 		
 		if (lstat(argv[i], &fileStat) == 1)
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 	}
 
     for (i = 1; i < argc; i++) {
-		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A") || _strcmp(argv[i], "-l"))
+		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-11111") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A") || _strcmp(argv[i], "-l"))
 			continue;
 		
 		if (lstat(argv[i], &fileStat) == -1)
