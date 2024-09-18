@@ -30,26 +30,32 @@ int main(int argc, char *argv[]) {
     struct dirent *read;
 	struct stat fileStat;
     int i;
-	int one_column = 0;
+	int one_flag = 0;
 	int directory_count = 0;
-	int hidden_files = 0;
+	int a_flag = 0;
+	int A_flag = 0;
 
 	for (i = 1; i < argc; i++)
 	{
 		if (_strcmp(argv[i], "-1"))
 		{
-			one_column = 1;
+			one_flag = 1;
 		}
 
 		if (_strcmp(argv[i], "-a"))
 		{
-			hidden_files = 1;
+			a_flag = 1;
+		}
+
+		if (_strcmp(argv[i], "-A"))
+		{
+			A_flag = 1;
 		}
 	}
 
 	for (i = 1; i < argc; i++)
 	{
-		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a"))
+		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A"))
 			continue;
 		
 		if (lstat(argv[i], &fileStat) == 1)
@@ -63,7 +69,7 @@ int main(int argc, char *argv[]) {
 	}
 
     for (i = 1; i < argc; i++) {
-		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a"))
+		if (_strcmp(argv[i], "-1") || _strcmp(argv[i], "-a") || _strcmp(argv[i], "-A"))
 			continue;
 		
 		if (lstat(argv[i], &fileStat) == -1)
@@ -74,7 +80,7 @@ int main(int argc, char *argv[]) {
 
 		if (S_ISREG(fileStat.st_mode))
 		{
-			if (one_column == 1)
+			if (one_flag == 1)
 			{
 				printf("%s\n", argv[i]);
 			}
@@ -88,7 +94,7 @@ int main(int argc, char *argv[]) {
 		{
 			if (directory_count > 1)
 			{
-				if (one_column == 1)
+				if (one_flag == 1)
 				{
 					printf("%s:\n", argv[i]);
 				}
@@ -105,11 +111,16 @@ int main(int argc, char *argv[]) {
 			}
 
 			while ((read = readdir(dir)) != NULL) {
-				if (read->d_name[0] == '.' && hidden_files == 0) {
+				if (read->d_name[0] == '.' && a_flag == 0 && A_flag == 0) {
 					continue;
 				}
 
-				if (one_column == 1)
+				if ((_strcmp(read->d_name, ".") || strcmp(read->d_name, "..") == 0) && A_flag == 1)
+				{
+                	continue;
+            	}
+
+				if (one_flag == 1)
 				{
 					printf("%s\n", read->d_name);	
 				}
