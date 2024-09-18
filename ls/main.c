@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
 	struct stat fileStat;
     int i;
 	int one_column = 0;
+	int directory_count = 0;
 
 	for (i = 1; i < argc; i++)
 	{
@@ -39,6 +40,21 @@ int main(int argc, char *argv[]) {
 			one_column = 1;
 			break;
 		}
+	}
+
+	for (i = 1; i < argc; i++)
+	{
+		if (_strcmp(argv[i], "-1"))
+			continue;
+		
+		if (lstat(argv[i], &fileStat) == 1)
+		{
+			fprintf(stderr, "%s: cannot access %s: No such file or directory\n", argv[0], argv[i]);
+			continue;	
+		}
+
+		if (S_ISDIR(fileStat.st_mode))
+			directory_count++;
 	}
 
     for (i = 1; i < argc; i++) {
@@ -65,7 +81,7 @@ int main(int argc, char *argv[]) {
 		}
 		else if (S_ISDIR(fileStat.st_mode))
 		{
-			if (argc > 2)
+			if (directory_count > 1)
 			{
 				if (one_column == 1)
 				{
