@@ -143,7 +143,7 @@ int main(int argc, char *argv[]) {
                     char time_str[20];
                     struct tm *timeinfo = localtime(&fileStat.st_mtime);
                     strftime(time_str, sizeof(time_str), "%b %d %Y", timeinfo);
-					printf("%s %d %s %s %ld %s %s\n",
+					printf("%s %ld %s %s %ld %s %s\n",
 						perms,
 						fileStat.st_nlink,
 						getpwuid(fileStat.st_uid)->pw_name,
