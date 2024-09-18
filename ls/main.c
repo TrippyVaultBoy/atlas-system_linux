@@ -39,8 +39,6 @@ int main(int argc, char *argv[]) {
 	int A_flag = 0;
 	int l_flag = 0;
 
-    realloc(&fileStat, 0, sizeof(struct stat));
-
 	for (i = 1; i < argc; i++)
 	{
 		if (_strcmp(argv[i], "-1"))
