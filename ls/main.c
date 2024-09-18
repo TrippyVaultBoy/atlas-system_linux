@@ -149,9 +149,6 @@ int main(int argc, char *argv[]) {
                 printf("\n"); 
             
             closedir(dir);
-
-            if (argc == 1)
-                break;
         }
     }
     return 0;
