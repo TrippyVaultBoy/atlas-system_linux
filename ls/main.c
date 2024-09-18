@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
                     perms[8] = (fileStat.st_mode & S_IWOTH) ? 'w' : '-';
                     perms[9] = (fileStat.st_mode & S_IXOTH) ? 'x' : '-';
 					perms[10] = '\0';
-					printf("%s %d %s %s %ld %s\n",
+					printf("%s %ld %s %s %ld %s\n",
 						perms,
 						fileStat.st_nlink,
 						getpwuid(fileStat.st_uid)->pw_name,
