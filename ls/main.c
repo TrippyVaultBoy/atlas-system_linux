@@ -163,6 +163,8 @@ int main(int argc, char *argv[]) {
 					printf("%s ", read->d_name);	
 				}
 			}
+			if (l_flag == 0)
+				printf("\n");
 			closedir(dir);
 			if (argc == 1)
 				break;
