@@ -140,19 +140,18 @@ int main(int argc, char *argv[]) {
                     perms[8] = (fileStat.st_mode & S_IWOTH) ? 'w' : '-';
                     perms[9] = (fileStat.st_mode & S_IXOTH) ? 'x' : '-';
 					perms[10] = '\0';
-					printf("%s %ld %s %s %ld %s %s\n",
+					printf("%s %s %d %s %s %ld %s\n",
+                        read->d_name,
 						perms,
 						fileStat.st_nlink,
 						getpwuid(fileStat.st_uid)->pw_name,
 						getgrgid(fileStat.st_gid)->gr_name,
 						fileStat.st_size,
-						ctime(&fileStat.st_mtime),
-						read->d_name
+						ctime(&fileStat.st_mtime)
 					);
 
 				}
-
-				if (one_flag == 1)
+				else if (one_flag == 1)
 				{
 					printf("%s\n", read->d_name);	
 				}
