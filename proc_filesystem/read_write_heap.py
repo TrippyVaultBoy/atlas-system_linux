@@ -1,11 +1,18 @@
 #!/usr/bin/python3
 
+"""
+This module finds a string in the heap of a running process, and replaces it.
+"""
+
 import sys
 import os
 import re
 import struct
 
 def main():
+    """
+    finds a string in the heap of a running process, and replaces it.
+    """
     if len(sys.argv) != 4:
         print("argument error")
         sys.exit(1)
