@@ -31,7 +31,7 @@ def main():
     
     maps_file = f"/proc/{pid}/maps"
 
-    start_address, end_adress = None
+    start_address, end_address = None
 
     with open(maps_file, "r") as file:
         for line in file:
@@ -41,7 +41,7 @@ def main():
                     start_address = int(match.group(1), 16)
                     and_address = int(match.group(2), 16)
     
-    if start_address is None or end_adress is None:
+    if start_address is None or end_address is None:
         print("error: could not find heap")
         sys.exit(1)
 
@@ -50,7 +50,7 @@ def main():
     with open (mem_file, "r+b") as mem:
         mem.seek(start_address)
 
-        heap = mem.read(end_adress - start_address)
+        heap = mem.read(end_address - start_address)
 
         search_bytes = search_string.encode("ascii")
         replace_bytes = replace_string.encode("ascii")
