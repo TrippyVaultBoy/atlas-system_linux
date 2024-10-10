@@ -37,7 +37,6 @@ def main():
     with open(maps_file, "r") as file:
         for line in file:
             if "[heap]" in line:
-                print(f"{line}\n")
                 parts = line.split()
                 address_range = parts[0]
                 start, end = address_range.split('-')
@@ -68,7 +67,6 @@ def main():
         mem.seek(start_address + pos)
 
         mem.write(replace_bytes)
-        print(f"Replaced '{search_string}' with '{replace_string}' in heap at address {hex(start_address + pos)}.")
 
 if __name__ == "__main__":
     main()
