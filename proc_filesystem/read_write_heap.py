@@ -9,6 +9,7 @@ import os
 import re
 import struct
 
+
 def main():
     """
     finds a string in the heap of a running process, and replaces it.
@@ -30,7 +31,7 @@ def main():
     if not os.path.exists(f"/proc/{pid}"):
         print(f"error: process {pid} does not exist")
         sys.exit(1)
-    
+
     maps_file = f"/proc/{pid}/maps"
 
     start_address = None
@@ -45,14 +46,14 @@ def main():
                 start_address = int(start, 16)
                 end_address = int(end, 16)
                 break
-    
+
     if start_address is None or end_address is None:
         print("error: could not find heap in memory")
         sys.exit(1)
 
     mem_file = f"/proc/{pid}/mem"
 
-    with open (mem_file, "r+b") as mem:
+    with open(mem_file, "r+b") as mem:
         mem.seek(start_address)
 
         heap = mem.read(end_address - start_address)
@@ -65,11 +66,11 @@ def main():
         if pos == -1:
             print(f"'{search_string}' not found in heap")
             sys.exit(1)
-        
+
         mem.seek(start_address + pos)
 
         mem.write(replace_bytes)
 
+
 if __name__ == "__main__":
     main()
-
