@@ -37,7 +37,7 @@ def main():
     with open(maps_file, "r") as file:
         for line in file:
             if "[heap]" in line:
-                print("{line}\n")
+                print(f"{line}\n")
                 match = re.match(r"([0-9a-f]+)-([0-9a-f]+) r[w-]p .* \[heap\]", line)
                 if match:
                     start_address = int(match.group(1), 16)
