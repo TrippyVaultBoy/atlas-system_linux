@@ -31,7 +31,8 @@ def main():
     
     maps_file = f"/proc/{pid}/maps"
 
-    start_address, end_address = None
+    start_address = None
+    end_address = None
 
     with open(maps_file, "r") as file:
         for line in file:
