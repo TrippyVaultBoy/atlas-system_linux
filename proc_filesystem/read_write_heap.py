@@ -39,7 +39,7 @@ def main():
                 match = re.match(r"([0-9a-f]+)-([0-9a-f]+) r[w-]p .* \[heap\]", line)
                 if match:
                     start_address = int(match.group(1), 16)
-                    and_address = int(match.group(2), 16)
+                    end_address = int(match.group(2), 16)
     
     if start_address is None or end_address is None:
         print("error: could not find heap")
