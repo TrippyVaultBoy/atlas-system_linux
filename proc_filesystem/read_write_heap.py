@@ -14,7 +14,7 @@ def main():
     finds a string in the heap of a running process, and replaces it.
     """
     if len(sys.argv) != 4:
-        print("argument error")
+        print("Error: incorrect number of arguments.")
         sys.exit(1)
 
     try:
@@ -22,7 +22,7 @@ def main():
         search_string = sys.argv[2]
         replace_string = sys.argv[3]
     except ValueError:
-        print("argument error")
+        print("Error: could not convert pid to int.")
         sys.exit(1)
 
     if not os.path.exists(f"/proc/{pid}"):
@@ -45,7 +45,7 @@ def main():
                 break
     
     if start_address is None or end_address is None:
-        print("error: could not find heap")
+        print("error: could not find heap in memory")
         sys.exit(1)
 
     mem_file = f"/proc/{pid}/mem"
