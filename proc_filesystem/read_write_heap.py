@@ -38,11 +38,12 @@ def main():
         for line in file:
             if "[heap]" in line:
                 print(f"{line}\n")
-                match = re.match(r"([0-9a-f]+)-([0-9a-f]+) r[w-]p .* \[heap\]", line)
-                if match:
-                    start_address = int(match.group(1), 16)
-                    end_address = int(match.group(2), 16)
-                    break
+                parts = line.split()
+                address_range = parts[0]
+                start, end = address_range.split('-')
+                start_address = int(start, 16)
+                end_address = int(end, 16)
+                break
     
     if start_address is None or end_address is None:
         print("error: could not find heap")
