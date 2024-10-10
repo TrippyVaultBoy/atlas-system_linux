@@ -23,8 +23,6 @@ def main():
         replace_string = sys.argv[3]
         if len(replace_string) == 0:
             replace_string = "\0" * len(search_string)
-        else:
-            replace_string = sys.argv[3]
     except ValueError:
         print("Error: could not convert pid to int.")
         sys.exit(1)
