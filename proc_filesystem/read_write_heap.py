@@ -41,6 +41,7 @@ def main():
                 if match:
                     start_address = int(match.group(1), 16)
                     end_address = int(match.group(2), 16)
+                    break
     
     if start_address is None or end_address is None:
         print("error: could not find heap")
