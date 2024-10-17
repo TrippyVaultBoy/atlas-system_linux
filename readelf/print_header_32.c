@@ -45,10 +45,7 @@ void print_header_32(Elf32_Ehdr *header) {
     printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
     
     printf("  Type:                              ");
-    uint16_t e_type = header->e_type;
-    if (is_big_endian) {
-        e_type = swap_uint32(e_type);
-    }
+    uint16_t e_type = is_big_endian ? swap_uint16(header->e_type) : header->e_type;
     switch (e_type) {
         case ET_NONE: printf("No file type\n"); break;
         case ET_REL: printf("REL (Relocatable file)\n"); break;
@@ -59,10 +56,7 @@ void print_header_32(Elf32_Ehdr *header) {
     }
 
     printf("  Machine:                           ");
-    uint16_t e_machine = header->e_machine;
-    if (is_big_endian) {
-        e_machine = swap_uint32(e_machine);
-    }
+    uint16_t e_machine = is_big_endian ? swap_uint16(header->e_machine) : header->e_machine;
     switch (e_machine) {
         case EM_NONE: printf("No machine\n"); break;
         case EM_386: printf("Intel 80386\n"); break;
