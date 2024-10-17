@@ -43,6 +43,9 @@ void print_header_64(Elf64_Ehdr *header) {
         case EM_386: printf("Intel 80386\n"); break;
         case EM_X86_64: printf("AMD x86-64\n"); break;
         case EM_SPARC: printf("Sparc\n"); break;
+        case EM_SPARC32PLUS: printf("Sun SPARC 32+\n"); break;
+        case EM_SPARCV9: printf("SPARC V9\n"); break;
+        case EM_AMDGPU: printf("AMD 64\n"); break;
         default: printf("<unknown: %d>\n", header->e_machine); break;
     }
     printf("  Version:                           0x%x\n", header->e_version);
