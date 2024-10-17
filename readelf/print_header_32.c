@@ -1,7 +1,8 @@
 #include "readelf.h"
 
 void print_header_32(Elf32_Ehdr *header) {
-    unsigned char *e_ident = header->e_ident; 
+    unsigned char *e_ident = header->e_ident;
+    printf("ELF Header:\n"); 
     printf("  Magic:   ");
     for (int i = 0; i < EI_NIDENT; i++) {
         printf("%02x ", e_ident[i]);
