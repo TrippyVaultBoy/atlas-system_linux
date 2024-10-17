@@ -1,5 +1,9 @@
 #include "readelf.h"
 
+/**
+* main - entry point
+* Return: 1 or 0
+*/
 int main(int argc, char *argv[]) {
     int fd;
     Elf64_Ehdr elf_header;

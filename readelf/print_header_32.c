@@ -1,5 +1,9 @@
 #include "readelf.h"
 
+/**
+* swap_uint32 - converts 32 bit
+* Return: uint32_t
+*/
 uint32_t swap_uint32(uint32_t val)
 {
 	return ((val >> 24) & 0xff) |
@@ -8,11 +12,19 @@ uint32_t swap_uint32(uint32_t val)
 			((val << 24) & 0xff000000);
 }
 
+/**
+* swap_uint16 - converts 16 bit
+* Return: uint16_t
+*/
 uint16_t swap_uint16(uint16_t val)
 {
 	return (val >> 8) | (val << 8);
 }
 
+/**
+* print_header_32 - prints 32 bit elf files
+* Return: void
+*/
 void print_header_32(Elf32_Ehdr *header)
 {
 	unsigned char *e_ident = header->e_ident;

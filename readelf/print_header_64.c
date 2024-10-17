@@ -1,5 +1,9 @@
 #include "readelf.h"
 
+/**
+* print_header_64 - prints 64 bit elf files
+* Return: void
+*/
 void print_header_64(Elf64_Ehdr *header) {
     unsigned char *e_ident = header->e_ident;
     printf("ELF Header:\n");
