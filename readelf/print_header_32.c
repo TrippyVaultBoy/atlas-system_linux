@@ -60,7 +60,7 @@ void print_header_32(Elf32_Ehdr *header) {
     switch (e_machine) {
         case EM_NONE: printf("No machine\n"); break;
         case EM_386: printf("Intel 80386\n"); break;
-        case EM_X86_64: printf("AMD x86-64\n"); break;
+        case EM_X86_64: printf("Advanced Micro Devices X86-64\n"); break;
         case EM_SPARC: printf("Sparc\n"); break;
         case EM_SPARC32PLUS: printf("Sun SPARC 32+\n"); break;
         case EM_SPARCV9: printf("SPARC V9\n"); break;

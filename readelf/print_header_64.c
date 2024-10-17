@@ -1,5 +1,16 @@
 #include "readelf.h"
 
+uint32_t swap_uint32(uint32_t val) {
+    return ((val >> 24) & 0xff) |       // Move byte 3 to byte 0
+           ((val << 8) & 0xff0000) |   // Move byte 1 to byte 2
+           ((val >> 8) & 0xff00) |     // Move byte 2 to byte 1
+           ((val << 24) & 0xff000000); // Move byte 0 to byte 3
+}
+
+uint16_t swap_uint16(uint16_t val) {
+    return (val >> 8) | (val << 8);
+}
+
 void print_header_64(Elf64_Ehdr *header) {
     unsigned char *e_ident = header->e_ident;
     printf("ELF Header:\n");
@@ -13,6 +24,7 @@ void print_header_64(Elf64_Ehdr *header) {
 
     printf("  Data:                              ");
     unsigned char data = header->e_ident[EI_DATA];
+    
     switch (data) {
         case ELFDATA2LSB: printf("2's complement, little endian\n"); break;
         case ELFDATA2MSB: printf("2's complement, big endian\n"); break;
@@ -41,7 +53,7 @@ void print_header_64(Elf64_Ehdr *header) {
     switch (header->e_machine) {
         case EM_NONE: printf("No machine\n"); break;
         case EM_386: printf("Intel 80386\n"); break;
-        case EM_X86_64: printf("AMD x86-64\n"); break;
+        case EM_X86_64: printf("Advanced Micro Devices X86-64\n"); break;
         case EM_SPARC: printf("Sparc\n"); break;
         case EM_SPARC32PLUS: printf("Sun SPARC 32+\n"); break;
         case EM_SPARCV9: printf("SPARC V9\n"); break;
