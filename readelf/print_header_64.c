@@ -14,59 +14,35 @@ void print_header_64(Elf64_Ehdr *header) {
     printf("  Data:                              ");
     unsigned char data = header->e_ident[EI_DATA];
     switch (data) {
-        case ELFDATA2LSB:
-            printf("2's complement, little endian\n");
-            break;
-        case ELFDATA2MSB:
-            printf("2's complement, big endian\n");
-            break;
-        default:
-            perror("Error: Cannot determine data encoding method");
+        case ELFDATA2LSB: printf("2's complement, little endian\n"); break;
+        case ELFDATA2MSB: printf("2's complement, big endian\n"); break;
+        default: perror("Error: Cannot determine data encoding method");
     }
 
     printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
     printf("  OS/ABI:                            ");
     switch (header->e_ident[EI_OSABI]) {
-        case ELFOSABI_SYSV:
-            printf("UNIX - System V\n");
-            break;
-        case ELFOSABI_LINUX:
-            printf("UNIX - Linux\n");
-            break;
-        case ELFOSABI_SOLARIS:
-            printf("UNIX - Solaris\n");
-            break;
-        default:
-            printf("<unknown: %x>\n", header->e_ident[EI_OSABI]);
-            break;
+        case ELFOSABI_SYSV: printf("UNIX - System V\n"); break;
+        case ELFOSABI_LINUX: printf("UNIX - Linux\n"); break;
+        case ELFOSABI_SOLARIS: printf("UNIX - Solaris\n"); break;
+        default: printf("<unknown: %x>\n", header->e_ident[EI_OSABI]); break;
     } 
     printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
     printf("  Type:                              ");
     switch (header->e_type) {
-        case ET_NONE:
-            printf("No file type\n");
-            break;
-        case ET_REL:
-            printf("REL (Relocatable file)\n");
-            break;
-        case ET_EXEC:
-            printf("EXEC (Executable file)\n");
-            break;
-        case ET_DYN:
-            printf("DYN (Shared object file)\n");
-            break;
-        case ET_CORE:
-            printf("CORE (Core file)\n");
-            break;
-        default:
-            printf("<unknown: %d>\n", header->e_type);
-            break;
+        case ET_NONE: printf("No file type\n"); break;
+        case ET_REL: printf("REL (Relocatable file)\n"); break;
+        case ET_EXEC: printf("EXEC (Executable file)\n"); break;
+        case ET_DYN: printf("DYN (Shared object file)\n"); break;
+        case ET_CORE: printf("CORE (Core file)\n"); break;
+        default: printf("<unknown: %d>\n", header->e_type); break;
     }
     printf("  Machine:                           ");
     switch (header->e_machine) {
         case EM_NONE: printf("No machine\n"); break;
         case EM_386: printf("Intel 80386\n"); break;
         case EM_X86_64: printf("AMD x86-64\n"); break;
+        case EM_SPARC: printf("Sparc\n"); break;
         default: printf("<unknown: %d>\n", header->e_machine); break;
     }
     printf("  Version:                           0x%x\n", header->e_version);
