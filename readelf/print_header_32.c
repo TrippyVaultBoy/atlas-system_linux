@@ -38,7 +38,7 @@ void print_header_32(Elf32_Ehdr *header) {
         case ELFOSABI_SYSV: printf("UNIX - System V\n"); break;
         case ELFOSABI_LINUX: printf("UNIX - Linux\n"); break;
         case ELFOSABI_SOLARIS: printf("UNIX - Solaris\n"); break;
-        case EM_SPARC: printf("Sparc\n"); break;
+        case ELFOSABI_NETBSD: printf("UNIX - NetBSD\n"); break;
         default: printf("<unknown: %x>\n", header->e_ident[EI_OSABI]); break;
     }
 
