@@ -1,21 +1,46 @@
 section .text
-    global asm_strcmp
+    global _asm_strcmp
 
-    asm_strcmp:
-    .loop:
-        movzx eax, byte [rdi]
-        movzx ebx, byte [rsi]
+_asm_strcmp:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32
 
-        cmp al, bl
-        jne .return
+    cmp rdi, 0
+    je .equal
+    cmp rsi, 0
+    je .equal
+    jmp .not_equal
 
-        test al, al
-        je .return
+.equal:
+    mov eax, 0
+    jmp .epilogue
 
-        inc rdi
-        inc rsi
-        jmp .loop
+.not_equal:
+    mov al, byte [rdi]
+    mov bl, byte [rsi]
 
-    .return:
-        sub eax, ebx
-        ret
+    test al, al
+    jz .equal
+    test bl, bl
+    jz .equal
+
+    cmp al, bl
+    jl .less_than
+    jg .greater_than
+
+    inc rdi
+    inc rsi
+    jmp .not_equal
+
+.less_than:
+    mov eax, -1
+    jmp .epilogue
+
+.greater_than:
+    mov eax, 1
+    jmp .epilogue
+
+.epilogue:
+    leave
+    ret
