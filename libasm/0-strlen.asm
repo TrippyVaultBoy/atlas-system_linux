@@ -1,5 +1,5 @@
 section .text
-    global strlen
+    global asm_strlen
 
 strlen:
     xor rax, rax

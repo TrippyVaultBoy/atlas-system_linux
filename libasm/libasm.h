@@ -1,6 +1,8 @@
-#IFNDEF LIBASM_H
-#DEFINE LIBASM_H
+#ifndef LIBASM_H
+#define LIBASM_H
 
-extern size_t strlen(const char *str);
+#include <stddef.h>
 
-#ENDIF
+extern size_t asm_strlen(const char *str);
+
+#endif
