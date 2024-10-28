@@ -9,7 +9,7 @@ asm_strcmp:
         mov bl, byte [rsi]
 
         cmp al, bl
-        jne .done
+        jne .not_equal
 
         test al, al
         je .equal
@@ -18,10 +18,10 @@ asm_strcmp:
         inc rsi
         jmp .loop
 
-    .done:
-        movzx eax, al
-        movzx ebx, bl
-        sub eax, ebx
+    .not_equal:
+        sub rax, rbx
+        ret
 
     .equal:
+        xor rax, rax
         ret
