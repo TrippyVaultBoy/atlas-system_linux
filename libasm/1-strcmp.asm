@@ -3,8 +3,8 @@ section .text
 
     asm_strcmp:
     .loop:
-        mov al, byte [rdi]
-        mov bl, byte [rsi]
+        movzx eax, byte [rdi]
+        movzx ebx, byte [rsi]
 
         cmp al, bl
         jne .return
