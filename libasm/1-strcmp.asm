@@ -19,7 +19,7 @@ asm_strcmp:
         jmp .loop
 
     .not_equal:
-        sub al, bl
+        sub rax, rbx
         ret
 
     .equal:
