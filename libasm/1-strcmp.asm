@@ -3,8 +3,6 @@ section .text
 
 asm_strcmp:
     xor rax, rax
-    push rdi
-    push rsi
 
     .loop:
         mov al, byte [rdi]
