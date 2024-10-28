@@ -3,15 +3,17 @@ section .text
 
 asm_strcmp:
     xor rax, rax
+    push rdi
+    push rsi
 
     .loop:
-        mov r8b, byte [rdi]
-        mov r9b, byte [rsi]
+        mov al, byte [rdi]
+        mov bl, byte [rsi]
 
-        cmp r8b, r9b
+        cmp al, bl
         jne .not_equal
 
-        test r8b, r8b
+        test al, al
         je .equal
 
         inc rdi
