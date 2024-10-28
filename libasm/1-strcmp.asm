@@ -4,26 +4,26 @@ section .text
 asm_strcmp:
     xor rax, rax
 
-    .loop:
-        mov al, byte [rdi]
-        mov bl, byte [rsi]
+.loop:
+    mov al, [rdi]
+    mov bl, [rsi]
 
-        cmp al, bl
-        jne .not_equal
+    cmp al, bl
+    jne .not_equal
 
-        test al, al
-        je .equal
+    test al, al
+    je .equal
 
-        inc rdi
-        inc rsi
-        jmp .loop
+    inc rdi
+    inc rsi
+    jmp .loop
 
-    .not_equal:
-        movzx eax, al
-        movzx ebx, bl
-        sub eax, ebx
-        ret
+.not_equal:
+    movzx eax, al
+    movzx ebx, bl
+    sub eax, ebx
+    ret
 
-    .equal:
-        xor rax, rax
-        ret
+.equal:
+    xor rax, rax
+    ret
