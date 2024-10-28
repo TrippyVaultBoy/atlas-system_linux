@@ -1,7 +1,7 @@
 section .text
     global asm_strlen
 
-strlen:
+asm_strlen:
     xor rax, rax
 
 .loop:
