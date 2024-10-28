@@ -5,13 +5,13 @@ asm_strcmp:
     xor rax, rax
 
     .loop:
-        mov al, byte [rdi]
-        mov bl, byte [rsi]
+        mov r8b, byte [rdi]
+        mov r9b, byte [rsi]
 
-        cmp al, bl
+        cmp r8b, r9b
         jne .not_equal
 
-        test al, al
+        test r8b, r8b
         je .equal
 
         inc rdi
@@ -19,7 +19,7 @@ asm_strcmp:
         jmp .loop
 
     .not_equal:
-        sub rax, rbx
+        sub rax,
         ret
 
     .equal:
