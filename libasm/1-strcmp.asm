@@ -1,7 +1,7 @@
 section .text
-    global _asm_strcmp
+    global asm_strcmp
 
-_asm_strcmp:
+asm_strcmp:
     push rbp
     mov rbp, rsp
     sub rsp, 32
