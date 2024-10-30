@@ -2,17 +2,17 @@ section .text
     global asm_memcpy
 
 asm_memcpy:
-    test rdx, rdx
-    jz .done
+    mov rax, rdi
+    xor rbx, rbx
 
 .copy_loop:
-    mov al, [rsi]
-    mov [rdi], al
+    mov r10b, byte [rsi]
+    mov byte [rdi], r10b
     inc rsi
     inc rdi
-    dec rdx
-    jnz .copy_loop
 
-.done:
-    mov rax, rdi
+    inc rbx
+    cmp rbx, rdx
+    jl .copy_loop
+
     ret
