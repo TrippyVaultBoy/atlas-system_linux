@@ -12,18 +12,12 @@
  */
 int main(void)
 {
-    int i;
-    char *src = strdup("Holberton");
+    assert(asm_putc('H') == 1);
+    assert(asm_putc('b') == 1);
+    assert(asm_putc('t') == 1);
+    assert(asm_putc('n') == 1);
+    assert(asm_putc('\n') == 1);
 
-    for (i = 0; i <= 9; i++)
-    {
-        char *dest = strdup("......... School");
-
-        assert(asm_memcpy(dest, src, i) == dest);
-        printf("%s\n", dest);
-        free(dest);
-    }
-    free(src);
     printf("All good!\n");
     return (EXIT_SUCCESS);
 }
