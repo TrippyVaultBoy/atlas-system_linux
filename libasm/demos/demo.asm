@@ -1,4 +1,4 @@
-global _main
+global main
 extern printf, scanf
 
 section .text
@@ -14,7 +14,7 @@ main:
     mov eax, 0
     lea rdi, [format]
     lea rsi, [number]
-    call printf
+    call scanf
 
     mov DWORD [rbp-4 ], 0
 

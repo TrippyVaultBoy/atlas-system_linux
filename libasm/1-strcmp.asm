@@ -2,45 +2,35 @@ section .text
     global asm_strcmp
 
 asm_strcmp:
-    push rbp
-    mov rbp, rsp
-    sub rsp, 32
+    xor rax, rax
+    xor rcx, rcx
 
-    cmp rdi, 0
-    je .equal
-    cmp rsi, 0
-    je .equal
-    jmp .not_equal
+.loop:
+    mov al, byte [rdi + rcx]
+    mov bl, byte [rsi + rcx]
 
-.equal:
-    mov eax, 0
-    jmp .epilogue
+    cmp al, 0
+    je .check_end 
 
-.not_equal:
-    mov al, byte [rdi]
-    mov bl, byte [rsi]
-
-    test al, al
-    jz .equal
-    test bl, bl
-    jz .equal
+    cmp bl, 0
+    je .check_end
 
     cmp al, bl
-    jl .less_than
-    jg .greater_than
+    jne .set_result
 
-    inc rdi
-    inc rsi
-    jmp .not_equal
+    inc rcx
+    jmp .loop
 
-.less_than:
-    mov eax, -1
-    jmp .epilogue
+.check_end:
+    cmp al, bl
+    jne .set_result
+    ret
 
-.greater_than:
-    mov eax, 1
-    jmp .epilogue
+.set_result:
+    mov rax, 1
+    cmp al, bl
+    jg .done
+    mov rax, -1
 
-.epilogue:
-    leave
+.done:
     ret
