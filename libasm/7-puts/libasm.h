@@ -12,6 +12,6 @@ extern void *asm_memcpy(void *dest, const void *src, size_t n);
 extern void *asm_memcpy(void *dest, const void *src, size_t n);
 extern size_t asm_putc(int c);
 extern size_t asm_puts(const char *str);
-extern int asm_strcasecmp(const char *s1, const char *s2);
 
 #endif
+
