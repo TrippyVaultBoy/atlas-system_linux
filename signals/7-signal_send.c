@@ -1,5 +1,12 @@
 #include "signals.h"
 
+/**
+* main - entry point
+* @argc: argc
+* @argv: argv
+*
+* Return: success or failure
+*/
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
