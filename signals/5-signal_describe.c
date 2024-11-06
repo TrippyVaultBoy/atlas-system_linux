@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	signum = atoi(argv[1]);
 	desc = strsignal(signum);
 	if (desc)
-		printf("%s\n", desc);
+		printf("%s: %s\n",argv[1], desc);
 	else
 		printf("Unknown signal: %d\n", signum);
 	return (desc ? EXIT_SUCCESS : EXIT_FAILURE);
