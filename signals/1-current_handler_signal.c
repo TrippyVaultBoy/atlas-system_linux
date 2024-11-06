@@ -2,13 +2,12 @@
 
 void (*current_handler_signal(void))(int)
 {
-    void (*handler)(int) = signal(SIGINT, SIG_IGN);
+	void (*handler)(int) = signal(SIGINT, SIG_IGN);
 
-    if (handler == SIG_IGN) {
-        return NULL;
-    }
+	if (handler == SIG_IGN)
+		return NULL;
 
-    signal(SIGINT, handler);
+	signal(SIGINT, handler);
 
-    return handler;
+	return handler;
 }
