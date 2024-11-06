@@ -1,5 +1,13 @@
 #include "signals.h"
 
+/**
+* handle_sigquit - handles sigquit
+* @signum: signal number
+* @info: pointer to siginfo_t struct
+* @context: unused pointer
+*
+* Return: void
+*/
 void handle_sigquit(int signum, siginfo_t *info, void *context)
 {
 	(void)context;
