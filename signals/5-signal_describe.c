@@ -1,5 +1,12 @@
 #include "signals.h"
 
+/**
+ * main - Entry point
+ * @argc: argc
+ * @argv: argv
+ *
+ * Return: EXIT_SUCCESS or EXIT_FAILURE
+ */
 int main(int argc, char *argv[])
 {
 	int signum;
