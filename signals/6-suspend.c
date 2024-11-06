@@ -4,7 +4,7 @@ void handle_sigint(int signum)
 {
     printf("Caught %d\n", signum);
     printf("Signal received\n");
-    exit(EXIT_SUCCESS);
+    _Exit(EXIT_SUCCESS);
 }
 
 int main(void)
